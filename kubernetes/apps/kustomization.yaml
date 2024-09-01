@@ -1,0 +1,10 @@
+resources:
+  - namespaces.yaml
+
+patches:
+  - target:
+      kind: Application
+    path: patches/argocd-finalizers.yaml
+  - target:
+      kind: Application
+    path: patches/argocd-sync-policy.yaml

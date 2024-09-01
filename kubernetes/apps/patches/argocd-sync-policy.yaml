@@ -1,0 +1,7 @@
+- op: add
+  path: /spec/syncPolicy
+  value:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false

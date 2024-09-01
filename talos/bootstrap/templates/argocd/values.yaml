@@ -1,0 +1,13 @@
+dex:
+  enabled: false
+
+notifications:
+  enabled: false
+
+configs:
+  repositories:
+    "bitbucket":
+      url: "git@github.com:CelPyn/infra.git"
+      type: git
+      sshPrivateKey: |
+        ${sshPrivateKey}
