@@ -16,6 +16,9 @@ spec:
           web:
             redirectTo: 
               port: websecure
+        ingressRoute:
+          dashboard:
+            enabled: true
         providers:
           kubernetesIngress:
             publishedService:
