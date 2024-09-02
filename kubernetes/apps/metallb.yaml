@@ -8,20 +8,12 @@ spec:
   source:
     chart: metallb
     repoURL: https://metallb.github.io/metallb
-    targetRevision: 0.14.18
+    targetRevision: 0.14.8
     helm:
       releaseName: metallb
   destination:
     server: "https://kubernetes.default.svc"
     namespace: metallb-system
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: false
-    managedNamespaceMetadata:
-      labels:
-        pod-security.kubernetes.io/enforce: privileged
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
