@@ -1,6 +1,7 @@
 resources:
   - namespaces.yaml
   - traefik.yaml
+  - metallb.yaml
 patches:
   - target:
       kind: Application
