@@ -42,8 +42,8 @@ resource "kubernetes_secret" "external-dns-credentials" {
   binary_data = {
     credentials = base64encode(
       templatefile("${path.module}/templates/external-dns/credentials", {
-        accessKeyId     = aws_iam_access_key.cert-manager.id,
-        secretAccessKey = aws_iam_access_key.cert-manager.secret
+        accessKeyId     = aws_iam_access_key.external-dns.id,
+        secretAccessKey = aws_iam_access_key.external-dns.secret
       })
     )
   }
