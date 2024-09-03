@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    chart: bitnamicharts/external-dns
-    repoURL: registry-1.docker.io
-    targetRevision: 8.3.5
+    chart: external-dns
+    repoURL: https://kubernetes-sigs.github.io/external-dns/
+    targetRevision: 1.14.5
     helm:
       releaseName: external-dns
       values: |
@@ -28,7 +28,8 @@ spec:
           - name: aws-credentials
             mountPath: /etc/aws/credentials
             readOnly: true
-        provider: aws
+        provider:
+          name: aws
   destination:
     server: "https://kubernetes.default.svc"
     namespace: external-dns
