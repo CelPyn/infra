@@ -5,6 +5,7 @@ resources:
   - metallb.yaml
   - namespaces.yaml
   - traefik.yaml
+  - webserver.yaml
 
 patches:
   - target:
