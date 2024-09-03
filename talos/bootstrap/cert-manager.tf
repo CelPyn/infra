@@ -6,7 +6,7 @@ resource "aws_iam_access_key" "cert-manager" {
   user = aws_iam_user.cert-manager.name
 }
 
-resource "aws_iam_user_policy_attachment" "dns-user" {
+resource "aws_iam_user_policy_attachment" "cert-manager" {
   user       = aws_iam_user.cert-manager.name
   policy_arn = aws_iam_policy.allow-cert-manager.arn
 }
@@ -54,7 +54,7 @@ resource "kubernetes_secret" "cert-manager-credentials" {
   }
 
   data = {
-    accessKeyId = aws_iam_user.cert-manager.name,
+    accessKeyId = aws_iam_access_key.cert-manager.id,
     secretAccessKey = aws_iam_access_key.cert-manager.secret
   }
 

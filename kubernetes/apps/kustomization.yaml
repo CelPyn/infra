@@ -1,8 +1,9 @@
 resources:
+  - cert-manager.yaml
+  - external-dns.yaml
+  - metallb.yaml
   - namespaces.yaml
   - traefik.yaml
-  - metallb.yaml
-  - cert-manager.yaml
 
 patches:
   - target:
