@@ -6,8 +6,10 @@ notifications:
 
 configs:
   repositories:
-    "bitbucket":
+    "github":
       url: "git@github.com:CelPyn/infra.git"
       type: git
       sshPrivateKey: |
         ${sshPrivateKey}
+  params:
+    server.insecure: true
