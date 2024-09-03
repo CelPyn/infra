@@ -17,6 +17,8 @@ spec:
             enabled: true
         providers:
           kubernetesIngress:
+            namespaces:
+              - "*"
             publishedService:
               enabled: true
   destination:
