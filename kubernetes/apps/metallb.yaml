@@ -24,7 +24,7 @@ spec:
     namespace: metallb-system
     server: 'https://kubernetes.default.svc'
   source:
-    path: kubernetes/infrastructure/metallb-infra
+    path: kubernetes/infrastructure/metallb
     repoURL: 'git@github.com:CelPyn/infra.git'
     targetRevision: HEAD
     directory:

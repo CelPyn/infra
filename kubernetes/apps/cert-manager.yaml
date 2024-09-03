@@ -29,7 +29,7 @@ spec:
     namespace: cert-manager
     server: 'https://kubernetes.default.svc'
   source:
-    path: kubernetes/infrastructure/cert-manager-infra
+    path: kubernetes/infrastructure/cert-manager
     repoURL: 'git@github.com:CelPyn/infra.git'
     targetRevision: HEAD
     directory:
