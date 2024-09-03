@@ -18,7 +18,8 @@ spec:
         providers:
           kubernetesIngress:
             namespaces:
-              - "*"
+              - argocd
+              - traefik
             publishedService:
               enabled: true
   destination:
