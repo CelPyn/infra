@@ -1,4 +1,5 @@
 resources:
+  - argocd.yaml
   - cert-manager.yaml
   - external-dns.yaml
   - metallb.yaml
