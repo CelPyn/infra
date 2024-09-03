@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: cert-manager
+    repoURL: https://charts.jetstack.io
+    targetRevision: 1.15.3
+    helm:
+      releaseName: cert-manager
+      values: |
+        installCRDs: true
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: 'arn:aws:iam::211125550721:role/karpenter-exploration-cert-manager' # TODO: Replace this with a variable
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: cert-manager
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-infra
+spec:
+  destination:
+    namespace: cert-manager
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: kubernetes/infrastructure/cert-manager-infra
+    repoURL: 'git@github.com:CelPyn/infra.git'
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  project: default
