@@ -1,7 +1,7 @@
 resources:
   - argocd.yaml
   - cert-manager.yaml
-#  - external-dns.yaml
+  - external-dns.yaml
   - metallb.yaml
   - namespaces.yaml
   - traefik.yaml
