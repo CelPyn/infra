@@ -2,6 +2,8 @@ resources:
   - namespaces.yaml
   - traefik.yaml
   - metallb.yaml
+  - cert-manager.yaml
+
 patches:
   - target:
       kind: Application
