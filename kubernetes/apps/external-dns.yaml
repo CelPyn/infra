@@ -17,6 +17,8 @@ spec:
           - pynenborg.com
         policy: sync
         env:
+          - name: AWS_DEFAULT_REGION
+            value: eu-west-1
           - name: AWS_SHARED_CREDENTIALS_FILE
             value: /etc/aws/credentials/credentials
         extraVolumes:
