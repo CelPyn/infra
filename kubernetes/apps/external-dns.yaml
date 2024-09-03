@@ -28,8 +28,7 @@ spec:
           - name: aws-credentials
             mountPath: /etc/aws/credentials
             readOnly: true
-        provider:
-          name: aws
+        provider: aws
   destination:
     server: "https://kubernetes.default.svc"
     namespace: external-dns
