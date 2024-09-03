@@ -15,7 +15,6 @@ spec:
         txtOwnerId: cel
         domainFilters:
           - pynenborg.com
-        policy: sync
         env:
           - name: AWS_DEFAULT_REGION
             value: eu-west-1
@@ -29,6 +28,8 @@ spec:
           - name: aws-credentials
             mountPath: /etc/aws/credentials
             readOnly: true
+        provider:
+          name: aws
   destination:
     server: "https://kubernetes.default.svc"
     namespace: external-dns
