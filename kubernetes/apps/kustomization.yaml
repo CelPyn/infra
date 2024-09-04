@@ -5,6 +5,7 @@ resources:
   - local-path-provisioner.yaml
   - metallb.yaml
   - namespaces.yaml
+  - pihole.yaml
   - traefik.yaml
   - webserver.yaml
 
