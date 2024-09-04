@@ -1,0 +1,8 @@
+namespace: pihole
+resources:
+  - deployment.yaml
+  - ingress.yaml
+  - persistence.yaml
+  - secret.yaml
+  - service.yaml
+  - serviceaccount.yaml
