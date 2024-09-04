@@ -40,7 +40,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: local-path-provisioner
-    namespace: local-path-provisioner
+    namespace: local-path-provisioner-service-account
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -54,4 +54,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: local-path-provisioner
-    namespace: local-path-provisioner
+    namespace: local-path-provisioner-service-account
