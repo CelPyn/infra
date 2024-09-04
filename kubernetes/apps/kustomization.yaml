@@ -7,7 +7,6 @@ resources:
   - namespaces.yaml
   - pihole.yaml
   - traefik.yaml
-  - webserver.yaml
 
 patches:
   - target:
