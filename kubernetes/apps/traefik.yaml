@@ -12,6 +12,10 @@ spec:
     helm:
       releaseName: traefik
       values: |
+        ports:
+          web:
+            redirectTo: 
+              port: websecure
         ingressRoute:
           dashboard:
             enabled: true
