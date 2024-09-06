@@ -3,10 +3,11 @@ resources:
   - cert-manager.yaml
   - external-dns.yaml
   - local-path-provisioner.yaml
+  - media
   - metallb.yaml
   - namespaces.yaml
   - pihole.yaml
-  - storage.yaml
+#  - storage.yaml
   - traefik.yaml
 
 patches:
