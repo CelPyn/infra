@@ -6,7 +6,7 @@ resources:
   - metallb.yaml
   - namespaces.yaml
   - pihole.yaml
-#  - storage.yaml
+  - storage.yaml
   - traefik.yaml
 
 patches:
