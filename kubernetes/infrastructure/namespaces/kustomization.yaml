@@ -2,6 +2,7 @@ resources:
   - cert-manager.yaml
   - external-dns.yaml
   - local-path-provisioner.yaml
+  - media.yaml
   - metallb.yaml
   - pihole.yaml
   - traefik.yaml
