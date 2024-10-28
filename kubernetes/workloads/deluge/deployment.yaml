@@ -34,8 +34,6 @@ spec:
               mountPath: /config
             - name: downloads
               mountPath: /downloads
-            - name: series
-              mountPath: /series
           resources:
             requests:
               cpu: "300m"
@@ -50,6 +48,3 @@ spec:
         - name: downloads
           persistentVolumeClaim:
             claimName: downloads
-        - name: series
-          persistentVolumeClaim:
-            claimName: series
