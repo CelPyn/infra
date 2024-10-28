@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deluge
+  labels:
+    app: deluge
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: deluge
+  template:
+    metadata:
+      labels:
+        app: deluge
+    spec:
+      containers:
+        - name: deluge
+          image: 'lscr.io/linuxserver/deluge:2.1.1'
+          env:
+            - name: TZ
+              value: 'Europe/Brussels'
+            - name: PUID
+              value: '1000'
+            - name: PGID
+              value: '1000'
+          ports:
+            - containerPort: 8112
+              protocol: TCP
+              name: http
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: downloads
+              mountPath: /downloads
+          resources:
+            requests:
+              cpu: "300m"
+              memory: "200Mi"
+            limits:
+              cpu: "400m"
+              memory: "300Mi"
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: deluge
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: downloads
