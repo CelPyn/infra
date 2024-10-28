@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyseerr
+  namespace: argocd
+spec:
+  destination:
+    namespace: media
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: kubernetes/workloads/jellyseerr
+    repoURL: 'git@github.com:CelPyn/infra.git'
+    targetRevision: HEAD
+    directory:
+      recurse: true
+  project: default
