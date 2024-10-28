@@ -31,6 +31,8 @@ spec:
               mountPath: /cache
             - name: movies
               mountPath: /movies
+            - name: series
+              mountPath: /series
             - name: dev-dri
               mountPath: /dev/dri
           livenessProbe:
@@ -70,7 +72,11 @@ spec:
             claimName: jellyfin-cache
         - name: movies
           persistentVolumeClaim:
-            claimName: media
+            claimName: movies
+            readOnly: true
+        - name: series
+          persistentVolumeClaim:
+            claimName: series
             readOnly: true
         - name: dev-dri
           hostPath:
