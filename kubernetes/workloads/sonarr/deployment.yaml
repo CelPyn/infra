@@ -68,7 +68,7 @@ spec:
             claimName: sonarr
         - name: tv
           persistentVolumeClaim:
-            claimName: tv
+            claimName: series
         - name: downloads
           persistentVolumeClaim:
             claimName: downloads
