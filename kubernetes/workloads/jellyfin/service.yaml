@@ -9,3 +9,18 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-lb
+spec:
+  type: LoadBalancer
+  selector:
+    app: jellyfin
+  ports:
+    - port: 9000
+      targetPort: http
+      protocol: TCP
+      name: http
+
