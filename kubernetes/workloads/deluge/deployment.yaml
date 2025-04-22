@@ -34,6 +34,10 @@ spec:
               mountPath: /config
             - name: downloads
               mountPath: /downloads
+            - name: movies
+              mountPath: /movies
+            - name: tv
+              mountPath: /tv
           resources:
             requests:
               cpu: "300m"
@@ -48,3 +52,9 @@ spec:
         - name: downloads
           persistentVolumeClaim:
             claimName: downloads
+        - name: movies
+          persistentVolumeClaim:
+            claimName: movies
+        - name: tv
+          persistentVolumeClaim:
+            claimName: series
