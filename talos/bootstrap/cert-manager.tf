@@ -47,16 +47,16 @@ data "aws_iam_policy_document" "allow-cert-manager" {
   }
 }
 
-resource "kubernetes_secret" "cert-manager-credentials" {
-  metadata {
-    name = "aws-credentials"
-    namespace = "cert-manager"
-  }
-
-  data = {
-    accessKeyId = aws_iam_access_key.cert-manager.id,
-    secretAccessKey = aws_iam_access_key.cert-manager.secret
-  }
-
-  depends_on = [kubernetes_manifest.app_of_apps]
-}
+# resource "kubernetes_secret" "cert-manager-credentials" {
+#   metadata {
+#     name = "aws-credentials"
+#     namespace = "cert-manager"
+#   }
+#
+#   data = {
+#     accessKeyId = aws_iam_access_key.cert-manager.id,
+#     secretAccessKey = aws_iam_access_key.cert-manager.secret
+#   }
+#
+#   depends_on = [kubernetes_manifest.app_of_apps]
+# }

@@ -26,13 +26,13 @@ provider "aws" {
 }
 
 provider "kubernetes" {
-  config_path    = "~/.kube/config"
-  config_context = "admin@cluster"
+  config_path    = "~/.kube/homelab"
+  config_context = "admin@homelab"
 }
 
 provider "helm" {
   kubernetes {
-    config_path = "~/.kube/config"
+    config_path = "~/.kube/homelab"
   }
 }
 

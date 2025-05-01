@@ -14,11 +14,11 @@ resource "helm_release" "argocd" {
   ]
 }
 
-resource "kubernetes_manifest" "app_of_apps" {
-  manifest = yamldecode(templatefile("${path.module}/templates/app-of-apps.yaml", {}))
-
-  depends_on = [helm_release.argocd]
-}
+# resource "kubernetes_manifest" "app_of_apps" {
+#   manifest = yamldecode(templatefile("${path.module}/templates/app-of-apps.yaml", {}))
+#
+#   depends_on = [helm_release.argocd]
+# }
 
 data "aws_secretsmanager_secret" "argocd_ssh_key" {
   name = "homelab/gitops/ssh-private-key"

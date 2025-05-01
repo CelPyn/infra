@@ -6,7 +6,7 @@ resources:
   - media
   - metallb.yaml
   - namespaces.yaml
-  - pihole.yaml
+#  - pihole.yaml
   - storage.yaml
   - traefik.yaml
 
