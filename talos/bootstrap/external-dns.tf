@@ -33,20 +33,20 @@ data "aws_iam_policy_document" "allow-external-dns" {
   }
 }
 
-# resource "kubernetes_secret" "external-dns-credentials" {
-#   metadata {
-#     name      = "aws-credentials"
-#     namespace = "external-dns"
-#   }
-#
-#   binary_data = {
-#     credentials = base64encode(
-#       templatefile("${path.module}/templates/external-dns/credentials", {
-#         accessKeyId     = aws_iam_access_key.external-dns.id,
-#         secretAccessKey = aws_iam_access_key.external-dns.secret
-#       })
-#     )
-#   }
-#
-#   depends_on = [kubernetes_manifest.app_of_apps]
-# }
+resource "kubernetes_secret" "external-dns-credentials" {
+  metadata {
+    name      = "aws-credentials"
+    namespace = "external-dns"
+  }
+
+  binary_data = {
+    credentials = base64encode(
+      templatefile("${path.module}/templates/external-dns/credentials", {
+        accessKeyId     = aws_iam_access_key.external-dns.id,
+        secretAccessKey = aws_iam_access_key.external-dns.secret
+      })
+    )
+  }
+
+  depends_on = [kubernetes_manifest.app_of_apps]
+}
