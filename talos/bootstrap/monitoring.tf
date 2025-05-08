@@ -1,6 +1,10 @@
 resource "kubernetes_namespace" "monitoring" {
   metadata {
     name = "monitoring"
+    labels = {
+      "pod-security.kubernetes.io/enforce": "privileged"
+      "pod-security.kubernetes.io/enforce-version": "latest"
+    }
   }
 }
 
