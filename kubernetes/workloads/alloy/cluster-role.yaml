@@ -36,6 +36,15 @@ rules:
       - get
       - list
       - watch
+  - apiGroups:
+      - monitoring.coreos.com
+    resources:
+      - podmonitors
+      - servicemonitors
+    verbs:
+      - get
+      - list
+      - watch
   - nonResourceURLs:
       - /metrics
     verbs:
