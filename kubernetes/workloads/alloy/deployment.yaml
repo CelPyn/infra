@@ -19,9 +19,6 @@ spec:
       containers:
         - name: alloy
           image: 'grafana/alloy:v1.8.2'
-          envFrom:
-            - secretRef:
-                name: grafana-cloud
           env:
             - name: GRAFANA_CLOUD_PROMETHEUS_ENDPOINT
               valueFrom:
