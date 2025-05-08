@@ -5,7 +5,7 @@ resource "helm_release" "argocd" {
 
   repository = "oci://ghcr.io/argoproj/argo-helm"
   chart      = "argo-cd"
-  version    = "7.5.0"
+  version    = "8.0.0"
 
   values = [
     templatefile("${path.module}/templates/argocd/values.yaml", {
