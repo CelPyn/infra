@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-node-exporter
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true
+spec:
+  project: default
+  source:
+    chart: prometheus-node-exporter
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 4.46.0
+    helm:
+      releaseName: prometheus-node-exporter
+      values: |
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - ServerSideApply=true
+      - Recreate=false
