@@ -1,0 +1,8 @@
+resources:
+  - cluster-role.yaml
+  - cluster-role-binding.yaml
+  - configmap.yaml
+  - deployment.yaml
+  - service-account.yaml
+
+namespace: monitoring

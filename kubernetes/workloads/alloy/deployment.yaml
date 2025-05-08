@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alloy
+  labels:
+    app: alloy
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: alloy
+  template:
+    metadata:
+      labels:
+        app: alloy
+    spec:
+      serviceAccountName: alloy
+      containers:
+        - name: alloy
+          image: 'grafana/alloy:v1.8.2'
+          envFrom:
+            - secretRef:
+                name: grafana-cloud
+          env:
+            - name: GRAFANA_CLOUD_PROMETHEUS_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  key: url
+                  name: grafana-credentials
+            - name: GRAFANA_CLOUD_PROMETHEUS_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: grafana-credentials
+            - name: GRAFANA_CLOUD_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: grafana-credentials
+          ports:
+            - containerPort: 12345
+              name: debug
+          volumeMounts:
+            - name: config
+              mountPath: /etc/alloy
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: alloy
