@@ -9,7 +9,7 @@ resource "helm_release" "argocd" {
 
   values = [
     templatefile("${path.module}/templates/argocd/values.yaml", {
-      sshPrivateKey = indent(8, data.aws_secretsmanager_secret_version.argocd_ssh_key.secret_string)
+      sshPrivateKey = indent(8, data.aws_ssm_parameter.argocd_ssh_key.value)
     })
   ]
 }
@@ -20,10 +20,6 @@ resource "kubernetes_manifest" "app_of_apps" {
   depends_on = [helm_release.argocd]
 }
 
-data "aws_secretsmanager_secret" "argocd_ssh_key" {
-  name = "homelab/gitops/ssh-private-key"
-}
-
-data "aws_secretsmanager_secret_version" "argocd_ssh_key" {
-  secret_id = data.aws_secretsmanager_secret.argocd_ssh_key.id
+data "aws_ssm_parameter" "argocd_ssh_key" {
+  name = "/homelab/gitops/ssh-private-key"
 }
