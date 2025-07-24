@@ -4,3 +4,4 @@ gha-runner-scale-set:
   controllerServiceAccount:
    namespace: arc
    name: gha-runner-scale-set-controller-gha-rs-controller
+  runnerScaleSetName: "cel-homelab"
