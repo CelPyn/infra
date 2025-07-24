@@ -1,5 +1,5 @@
 gha-runner-scale-set:
-  githubConfigUrl: "https://github.com/organizations/SaaSpacho"
+  githubConfigUrl: "https://github.com/SaaSpacho"
   githubConfigSecret: arc-credentials
   controllerServiceAccount:
    namespace: arc
