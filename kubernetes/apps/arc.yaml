@@ -1,16 +1,33 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: arc
+  name: gha-controller
   namespace: argocd
 spec:
   project: default
   source:
-    path: kubernetes/workloads/arc
+    path: kubernetes/workloads/arc/controller
     repoURL: 'git@github.com:CelPyn/infra.git'
     targetRevision: HEAD
     helm:
-      releaseName: github-actions
+      releaseName: gha-runner-scale-set-controller
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: arc
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gha-runner-scale-set
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: kubernetes/workloads/arc/scale-set
+    repoURL: 'git@github.com:CelPyn/infra.git'
+    targetRevision: HEAD
+    helm:
+      releaseName: gha-runner-scale-set
   destination:
     server: "https://kubernetes.default.svc"
     namespace: arc
