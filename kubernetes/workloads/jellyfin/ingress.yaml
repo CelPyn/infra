@@ -23,3 +23,18 @@ spec:
     - hosts:
         - jellyfin.pynenborg.com
       secretName: jellyfin-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin-ts
+spec:
+  defaultBackend:
+    service:
+      name: jellyfin
+      port:
+        number: 80
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - jellyfin
