@@ -6,4 +6,5 @@ resources:
   - media.yaml
   - metallb.yaml
   - pihole.yaml
+  - tailscale.yaml
   - traefik.yaml
