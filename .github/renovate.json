@@ -7,8 +7,8 @@
     "CelPyn/infra"
   ],
   "kubernetes": {
-    "fileMatch": [
-      "kubernetes/.*\\.ya?ml$"
+    "managerFilePatterns": [
+      "/kubernetes/.*\\.ya?ml$"
     ]
   }
 }
