@@ -6,13 +6,16 @@
   "kubernetes": {},
   "argocd": {},
   "kustomize": {},
-  "regex": {
-    "managerFilePatterns": [
-      "^/kubernetes/.*\\.yaml$"
-    ],
-    "matchStrings": [
-      "image:\\s?(\"|')?(?<depName>[\\w\\-/]+):(?<currentValue>[\\w\\.\\-]+)\"?(\"|')?"
-    ],
-    "datasourceTemplate": "docker"
-  }
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "^/kubernetes/.*\\.yaml$"
+      ],
+      "matchStrings": [
+        "image:\\s?(\"|')?(?<depName>[\\w\\-/]+):(?<currentValue>[\\w\\.\\-]+)\"?(\"|')?"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ]
 }
