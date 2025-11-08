@@ -3,12 +3,16 @@
   "extends": [
     "config:recommended"
   ],
-  "repositories": [
-    "CelPyn/infra"
-  ],
-  "kubernetes": {
+  "kubernetes": {},
+  "argocd": {},
+  "kustomize": {},
+  "regex": {
     "managerFilePatterns": [
-      "/kubernetes/.*\\.ya?ml$"
-    ]
+      "^/kubernetes/.*\\.yaml$"
+    ],
+    "matchStrings": [
+      "image:\\s?(\"|')?(?<depName>[\\w\\-/]+):(?<currentValue>[\\w\\.\\-]+)\"?(\"|')?"
+    ],
+    "datasourceTemplate": "docker"
   }
 }
