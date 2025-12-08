@@ -1,5 +1,6 @@
 resources:
   - arc.yaml
+  - authentik.yaml
   - cert-manager.yaml
   - external-dns.yaml
   - local-path-provisioner.yaml
