@@ -8,7 +8,7 @@ spec:
   source:
     chart: cloudnative-pg
     repoURL: https://cloudnative-pg.github.io/charts
-    targetRevision: 1.14.5
+    targetRevision: 0.26.1
     helm:
       releaseName: cloudnative-pg
       values: |
