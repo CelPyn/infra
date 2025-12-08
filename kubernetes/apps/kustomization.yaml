@@ -5,6 +5,7 @@ resources:
   - cert-manager.yaml
   - cloudnative-pg.yaml
   - external-dns.yaml
+  - kube-state-metrics.yaml
   - local-path-provisioner.yaml
   - media
   - metallb.yaml

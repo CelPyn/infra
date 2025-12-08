@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-state-metrics
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: kube-state-metrics
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 6.4.2
+    helm:
+      releaseName: kube-state-metrics
+      values: |
+        prometheus:
+          monitor:
+            enabled: true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+      - Recreate=false
