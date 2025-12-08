@@ -22,8 +22,8 @@ resource "kubernetes_secret" "authentik_postgres_db" {
   }
 
   data = {
-    username = base64encode("authentik")
-    password = base64encode(random_password.authentik.result)
+    username = "authentik"
+    password = random_password.authentik.result
   }
 
   type = "kubernetes.io/basic-auth"

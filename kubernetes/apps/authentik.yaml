@@ -67,6 +67,7 @@ spec:
         
         redis:
           enabled: true
+        
 
       releaseName: authentik
   destination:
