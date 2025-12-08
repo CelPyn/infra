@@ -4,6 +4,9 @@ dex:
 notifications:
   enabled: false
 
+global:
+  domain: "argocd.pynenborg.com"
+
 configs:
   repositories:
     "github":
