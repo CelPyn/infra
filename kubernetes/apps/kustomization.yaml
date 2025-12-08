@@ -10,6 +10,7 @@ resources:
   - metallb.yaml
   - namespaces.yaml
 #  - pihole.yaml
+  - postgres-databases.yaml
   - prometheus-node-exporter.yaml
   - prometheus-operator-crds.yaml
   - storage.yaml
