@@ -3,7 +3,7 @@ resource "random_password" "authentik" {
 }
 
 resource "kubernetes_secret" "authentik_postgres" {
-  for_each = toset(["postgres"])
+  for_each = toset(["authentik", "postgres"])
 
   metadata {
     name      = "authentik-pg-credentials"
@@ -16,4 +16,21 @@ resource "kubernetes_secret" "authentik_postgres" {
   }
 
   type = "kubernetes.io/basic-auth"
+}
+
+resource "random_password" "authentik_signing_key" {
+  length = 50
+}
+
+resource "kubernetes_secret" "authentik_signing_key" {
+  for_each = toset(["authentik"])
+
+  metadata {
+    name      = "authentik-signing-key"
+    namespace = each.value
+  }
+
+  data = {
+    key = random_password.authentik_signing_key.result
+  }
 }
