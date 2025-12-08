@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: prowlarr
-          image: 'lscr.io/linuxserver/prowlarr:1.18.0'
+          image: 'lscr.io/linuxserver/prowlarr:2.3.0'
           env:
             - name: TZ
               value: 'Europe/Brussels'

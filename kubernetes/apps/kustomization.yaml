@@ -1,5 +1,4 @@
 resources:
-  - arc.yaml
   - alloy.yaml
   - argocd.yaml
   - authentik.yaml

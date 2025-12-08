@@ -1,7 +1,0 @@
-gha-runner-scale-set:
-  githubConfigUrl: "https://github.com/SaaSpacho"
-  githubConfigSecret: arc-credentials
-  controllerServiceAccount:
-   namespace: arc
-   name: gha-runner-scale-set-controller-gha-rs-controller
-  runnerScaleSetName: "cel-homelab"

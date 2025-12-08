@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: deluge
-          image: 'lscr.io/linuxserver/deluge:2.1.1'
+          image: 'linuxserver/deluge:2.2.0'
           env:
             - name: TZ
               value: 'Europe/Brussels'
