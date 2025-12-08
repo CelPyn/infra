@@ -2,6 +2,7 @@ resources:
   - arc.yaml
   - alloy.yaml
   - argocd.yaml
+  - authentik.yaml
   - cert-manager.yaml
   - cloudnative-pg.yaml
   - external-dns.yaml
