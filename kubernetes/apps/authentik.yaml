@@ -1,0 +1,77 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: authentik
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: authentik
+    repoURL: https://charts.goauthentik.io/
+    targetRevision: 2025.10.2
+    helm:
+      values: |
+        
+        authentik:
+          secret_key: file:///secret-key/key
+          error_reporting:
+            enabled: false
+          postgresql:
+            host: authentik-rw.postgres.svc.cluster.local
+            user: file:///postgres-creds/username
+            password: file:///postgres-creds/password
+        
+        server:
+          ingress:
+            enabled: true
+            ingressClassName: traefik
+            hosts:
+              - auth.pynenborg.com
+            tls:
+              - hosts:
+                  - auth.pynenborg.com
+                secretName: authentik-tls
+          volumes:
+            - name: postgres-creds
+              secret:
+                secretName: authentik-pg-credentials
+            - name: secret-key
+              secret:
+                secretName: authentik-signing-key          
+          volumeMounts:
+            - name: postgres-creds
+              mountPath: /postgres-creds
+              readOnly: true
+            - name: secret-key
+              mountPath: /secret-key
+              readOnly: true
+        
+        worker:
+          volumes:
+            - name: postgres-creds
+              secret:
+                secretName: authentik-pg-credentials
+            - name: secret-key
+              secret:
+                secretName: authentik-signing-key          
+          volumeMounts:
+            - name: postgres-creds
+              mountPath: /postgres-creds
+              readOnly: true
+            - name: secret-key
+              mountPath: /secret-key
+              readOnly: true
+        
+        postgresql:
+          enabled: false
+        
+        redis:
+          enabled: true
+
+      releaseName: authentik
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: authentik
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
