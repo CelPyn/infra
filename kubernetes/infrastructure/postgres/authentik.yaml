@@ -1,0 +1,19 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: authentik
+spec:
+  instances: 3
+  primaryUpdateStrategy: unsupervised
+
+  bootstrap:
+    initdb:
+      database: authentik
+      username: authentik
+      passwordSecret:
+        name: authentik-pg-credentials
+        key: password
+
+  storage:
+    storageClass: local-path
+    size: 1Gi
