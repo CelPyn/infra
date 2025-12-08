@@ -18,7 +18,7 @@ spec:
       serviceAccountName: alloy
       containers:
         - name: alloy
-          image: 'grafana/alloy:v1.8.2'
+          image: 'grafana/alloy:v1.12.0'
           env:
             - name: GRAFANA_CLOUD_PROMETHEUS_ENDPOINT
               valueFrom:
