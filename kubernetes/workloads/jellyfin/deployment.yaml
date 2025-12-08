@@ -80,11 +80,11 @@ spec:
         - name: movies
           persistentVolumeClaim:
             claimName: movies
-            readOnly: true
+            readOnly: false
         - name: series
           persistentVolumeClaim:
             claimName: series
-            readOnly: true
+            readOnly: false
         - name: dev-dri
           hostPath:
             path: /dev/dri
