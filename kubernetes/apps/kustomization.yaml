@@ -3,6 +3,7 @@ resources:
   - alloy.yaml
   - argocd.yaml
   - cert-manager.yaml
+  - cloudnative-pg.yaml
   - external-dns.yaml
   - local-path-provisioner.yaml
   - media
