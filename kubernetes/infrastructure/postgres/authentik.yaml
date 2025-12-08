@@ -9,10 +9,9 @@ spec:
   bootstrap:
     initdb:
       database: authentik
-      username: authentik
+      owner: authentik
       secret:
         name: authentik-pg-credentials
-        key: password
 
   storage:
     storageClass: local-path
