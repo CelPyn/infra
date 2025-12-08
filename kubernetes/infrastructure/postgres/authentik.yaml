@@ -10,7 +10,7 @@ spec:
     initdb:
       database: authentik
       username: authentik
-      passwordSecret:
+      secret:
         name: authentik-pg-credentials
         key: password
 
