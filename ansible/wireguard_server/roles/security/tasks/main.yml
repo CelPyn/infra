@@ -1,0 +1,13 @@
+- name: Update SSH configuration with best practices
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    validate: 'sshd -t -f %s'
+  with_items:
+    - regexp: "^PasswordAuthentication"
+      line: "PasswordAuthentication no"
+    - regexp: "^PermitRootLogin"
+      line: "PermitRootLogin no"
+  notify: restart ssh
