@@ -10,3 +10,15 @@ mkdir .ssh
 sudo cp /root/.ssh/authorized_keys /home/ansible/.ssh/authorized_keys
 sudo chown -R ansible:ansible /home/ansible/.ssh
 ```
+
+To allow the ansible user to become root without a password prompt, run:
+
+```bash
+sudo visudo
+```
+
+Add the following line to the sudoers file:
+
+```plaintext
+ansible ALL=(ALL) NOPASSWD: ALL
+```

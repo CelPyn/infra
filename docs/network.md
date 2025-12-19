@@ -21,6 +21,7 @@ Ubiquity Router:
 | Default     | 10.1.0.0/16  | 255.255.0.0 | 10.1.0.1  | 1    |
 | Wifi        | 10.24.0.0/16 | 255.255.0.0 | 10.24.0.1 | 24   |
 | Homelab     | 10.25.0.0/16 | 255.255.0.0 | 10.25.0.1 | 25   |
+| VPN         | 10.26.0.0/16 | 255.255.0.0 | 10.25.0.1 | 26   |
 
 Homelab subnet topology:
 
@@ -30,4 +31,11 @@ Homelab subnet topology:
 | Kubernetes Control Planes | 10.25.2.1 - 10.25.2.254     | false |
 | Kubernetes Worker Nodes   | 10.25.3.1 - 10.25.3.254     | false |
 | MetalLB LoadBalancers     | 10.25.4.1 - 10.25.4.254     | false |
+| Other                     | 10.25.250.1 - 10.25.255.254 | true  |
+
+VPN Subnet Topology:
+
+| Host type                 | IP Range                    | DHCP  |
+|---------------------------|-----------------------------|-------|
+| VPN Devices               | 10.25.1.1 - 10.25.250.0     | false |
 | Other                     | 10.25.250.1 - 10.25.255.254 | true  |
