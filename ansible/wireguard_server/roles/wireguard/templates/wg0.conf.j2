@@ -1,0 +1,24 @@
+[interface]
+Address    = 10.26.0.2/16
+ListenPort = 51820
+PrivateKey = <<PK>>
+
+# Forward/ MASQUERADE outgoing connections (Internet)
+PostUp   = iptables -t filter -A FORWARD -j ACCEPT -i %i ! -o %i
+PostDown = iptables -t filter -D FORWARD -j ACCEPT -i %i ! -o %i
+PostUp   = iptables -t nat    -A POSTROUTING -j MASQUERADE -s 10.26.0.0/16 ! -o %i
+PostDown = iptables -t nat    -D POSTROUTING -j MASQUERADE -s 10.26.0.0/16 ! -o %i
+
+# Allow forwarding WireGuard traffic
+PostUp   = iptables -t filter -A FORWARD -j ACCEPT -i %i -o %i
+PostDown = iptables -t filter -D FORWARD -j ACCEPT -i %i -o %i
+
+# MacBook
+[Peer]
+PublicKey = EvHdi8cVS1uUaWv8X7GouJjvhAGcNrpHBgHU3wqLhwY=
+AllowedIPs = 10.26.0.4/32
+
+# Home Router
+[Peer]
+PublicKey = zgv/BOzicnzXYA16v+GdIeuZHVTBdSJM2GAkqXUXwHs=
+AllowedIPs = 10.26.0.5/32, 10.25.0.0/16
