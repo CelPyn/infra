@@ -1,0 +1,5 @@
+[server]
+vpn.pynenborg.com
+
+[peer]
+10.25.5.1

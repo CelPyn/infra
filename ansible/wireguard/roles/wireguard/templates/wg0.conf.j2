@@ -1,7 +1,7 @@
 [interface]
 Address    = 10.26.0.2/16
 ListenPort = 51820
-PrivateKey = <<PK>>
+PrivateKey = {{ privatekey.content | b64decode | trim }}
 
 # Forward/ MASQUERADE outgoing connections (Internet)
 PostUp   = iptables -t filter -A FORWARD -j ACCEPT -i %i ! -o %i
@@ -17,8 +17,3 @@ PostDown = iptables -t filter -D FORWARD -j ACCEPT -i %i -o %i
 [Peer]
 PublicKey = EvHdi8cVS1uUaWv8X7GouJjvhAGcNrpHBgHU3wqLhwY=
 AllowedIPs = 10.26.0.4/32
-
-# Home Router
-[Peer]
-PublicKey = zgv/BOzicnzXYA16v+GdIeuZHVTBdSJM2GAkqXUXwHs=
-AllowedIPs = 10.26.0.5/32, 10.25.0.0/16

@@ -1,5 +1,0 @@
-- hosts: wireguard
-  become: yes
-  roles:
-    - security
-    - wireguard

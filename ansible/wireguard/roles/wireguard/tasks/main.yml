@@ -20,6 +20,23 @@
     state: present
     sysctl_set: yes
 
+- name: Generate private key
+  shell: wg genkey > /etc/wireguard/privatekey
+  args:
+    creates: /etc/wireguard/privatekey
+
+- name: Set permissions on private key
+  file:
+    path: /etc/wireguard/privatekey
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Read private key
+  slurp:
+    src: /etc/wireguard/privatekey
+  register: privatekey
+
 - name: Set wg0.conf
   template:
     src: templates/wg0.conf.j2

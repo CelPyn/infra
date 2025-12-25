@@ -1,0 +1,10 @@
+- hosts: server
+  become: yes
+  roles:
+    - security
+    - wireguard
+
+- hosts: peer
+  become: yes
+  roles:
+    - security
