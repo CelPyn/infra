@@ -1,3 +1,16 @@
+- name: Install essential packages
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - vim
+    - htop
+
+- name: Install unattended-upgrades package
+  package:
+    name: unattended-upgrades
+    state: present
+
 - name: Update SSH configuration with best practices
   lineinfile:
     dest: /etc/ssh/sshd_config
