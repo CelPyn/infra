@@ -23,18 +23,3 @@ spec:
     - hosts:
         - deluge.pynenborg.com
       secretName: deluge-tls
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: deluge-ts
-spec:
-  defaultBackend:
-    service:
-      name: deluge
-      port:
-        number: 80
-  ingressClassName: tailscale
-  tls:
-    - hosts:
-        - deluge

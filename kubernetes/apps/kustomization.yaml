@@ -15,7 +15,6 @@ resources:
   - prometheus-node-exporter.yaml
   - prometheus-operator-crds.yaml
   - storage.yaml
-  - tailscale.yaml
   - traefik.yaml
 
 patches:
