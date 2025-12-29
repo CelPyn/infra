@@ -3,13 +3,13 @@ Address    = 10.26.0.3/32
 ListenPort = 51820
 PrivateKey = {{ privatekey.content | b64decode | trim }}
 
-# Forward traffic between WireGuard and LAN
+# Forward WireGuard traffic to LAN (ens18)
 PostUp   = iptables -t filter -A FORWARD -i %i -o ens18 -j ACCEPT
 PostDown = iptables -t filter -D FORWARD -i %i -o ens18 -j ACCEPT
 PostUp   = iptables -t filter -A FORWARD -i ens18 -o %i -j ACCEPT
 PostDown = iptables -t filter -D FORWARD -i ens18 -o %i -j ACCEPT
 
-# MASQUERADE for homelab devices to reach internet via VPN
+# NAT outgoing connections from WireGuard to LAN
 PostUp   = iptables -t nat    -A POSTROUTING -j MASQUERADE -s 10.26.0.0/16 -o ens18
 PostDown = iptables -t nat    -D POSTROUTING -j MASQUERADE -s 10.26.0.0/16 -o ens18
 

@@ -5,7 +5,9 @@ and is terminated by a proprietary piece of Proximus hardware. It is then conver
 optic to copper via an ONT. A connection from the ONT box is made to the WAN Port on the Mobile Vikings
 Internet Box. Port 1 on the Internet Box is connected to the WAN port on my Ubiquity router.
 
-Subnetting:
+![Network Topology](./images/network-topology.png)
+
+## Subnetting
 
 Internet Box (Basically my guest network):
 
@@ -32,3 +34,23 @@ Homelab subnet topology:
 | MetalLB LoadBalancers     | 10.25.4.1 - 10.25.4.254     | false |
 | VPN Devices               | 10.25.5.1 - 10.25.5.254     | false |
 | Other                     | 10.25.250.1 - 10.25.255.254 | true  |
+
+## VPN
+
+I use WireGuard as a VPN solution to securely connect to my home network from a remote location. The WireGuard server is hosted on a small VPS outside my home network.
+This setup allows me to access my home network resources securely without exposing them directly to the internet.
+
+Using a Hub-and-Spoke topology, all VPN clients connect to the WireGuard server, which then routes traffic to the appropriate devices on my home network.
+A WireGuard client is deployed within my home network to handle routing to my homelab subnet. 
+Split tunneling is configured on the end-devices, so only traffic destined for the home network is sent through the VPN.
+
+Something to note is that I needed to set up a specific routing rule on my Ubiquity router to ensure that the return traffic from my homelab subnet goes back through the WireGuard client.
+This rule looks like this:
+
+```plaintext
+Source: Any
+Destination: 10.26.0.0/16
+Next Hop: 10.25.5.1 (IP of WireGuard Peer)
+```
+
+
