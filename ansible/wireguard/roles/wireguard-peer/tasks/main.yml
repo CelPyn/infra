@@ -1,0 +1,72 @@
+---
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - wireguard
+    - wireguard-tools
+    - iptables
+
+- name: Enable wireguard kernel module
+  community.general.modprobe:
+    name: wireguard
+    state: present
+    persistent: present
+
+- name: Enable IPv4 forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
+    state: present
+    sysctl_set: yes
+
+- name: Generate private key
+  shell: wg genkey > /etc/wireguard/privatekey
+  args:
+    creates: /etc/wireguard/privatekey
+
+- name: Set permissions on private key
+  file:
+    path: /etc/wireguard/privatekey
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Read private key
+  slurp:
+    src: /etc/wireguard/privatekey
+  register: privatekey
+
+- name: Generate public key
+  shell: cat /etc/wireguard/privatekey | wg pubkey > /etc/wireguard/publickey
+  args:
+    creates: /etc/wireguard/publickey
+
+- name: Set permissions on public key
+  file:
+    path: /etc/wireguard/publickey
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Set wg0.conf
+  template:
+    src: templates/wg0.conf.j2
+    dest: /etc/wireguard/wg0.conf
+    owner: root
+    group: root
+    mode: 0600
+  register: wg0_conf
+
+- name: Enable and start wg0 interface
+  systemd:
+    name: wg-quick@wg0
+    enabled: yes
+    state: started
+
+- name: Restart wg0 when config changed
+  systemd:
+    name: wg-quick@wg0
+    state: restarted
+  when: wg0_conf.changed

@@ -1,0 +1,20 @@
+[interface]
+Address    = 10.26.0.3/32
+ListenPort = 51820
+PrivateKey = {{ privatekey.content | b64decode | trim }}
+
+# Forward traffic between WireGuard and LAN
+PostUp   = iptables -t filter -A FORWARD -i %i -o ens18 -j ACCEPT
+PostDown = iptables -t filter -D FORWARD -i %i -o ens18 -j ACCEPT
+PostUp   = iptables -t filter -A FORWARD -i ens18 -o %i -j ACCEPT
+PostDown = iptables -t filter -D FORWARD -i ens18 -o %i -j ACCEPT
+
+# MASQUERADE for homelab devices to reach internet via VPN
+PostUp   = iptables -t nat    -A POSTROUTING -j MASQUERADE -s 10.26.0.0/16 -o ens18
+PostDown = iptables -t nat    -D POSTROUTING -j MASQUERADE -s 10.26.0.0/16 -o ens18
+
+[Peer]
+Endpoint            = vpn.pynenborg.com:51820
+PublicKey           = wX5gKpH3um5w10LAUAo+hrSpudR7s+fjh1sFzYYbSwE=
+AllowedIPs          = 10.26.0.0/16
+PersistentKeepalive = 30

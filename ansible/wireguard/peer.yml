@@ -1,0 +1,5 @@
+- hosts: peer
+  become: yes
+  roles:
+    - security
+    - wireguard-peer

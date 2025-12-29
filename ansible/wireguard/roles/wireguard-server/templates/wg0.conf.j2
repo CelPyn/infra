@@ -13,7 +13,12 @@ PostDown = iptables -t nat    -D POSTROUTING -j MASQUERADE -s 10.26.0.0/16 ! -o 
 PostUp   = iptables -t filter -A FORWARD -j ACCEPT -i %i -o %i
 PostDown = iptables -t filter -D FORWARD -j ACCEPT -i %i -o %i
 
+# WG Peer
+[Peer]
+PublicKey  = byIpL99czxTUgoyF2fIV9QctM42hwoBVAUYce37jIks=
+AllowedIPs = 10.26.0.3/32, 10.25.0.0/16
+
 # MacBook
 [Peer]
-PublicKey = EvHdi8cVS1uUaWv8X7GouJjvhAGcNrpHBgHU3wqLhwY=
+PublicKey  = EvHdi8cVS1uUaWv8X7GouJjvhAGcNrpHBgHU3wqLhwY=
 AllowedIPs = 10.26.0.4/32
