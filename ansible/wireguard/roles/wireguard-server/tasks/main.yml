@@ -6,6 +6,7 @@
   loop:
     - wireguard
     - wireguard-tools
+    - qrencode
 
 - name: Enable wireguard kernel module
   community.general.modprobe:
