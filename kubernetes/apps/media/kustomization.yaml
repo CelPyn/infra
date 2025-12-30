@@ -1,5 +1,6 @@
 resources:
   - deluge.yaml
+  - flaresolverr.yaml
   - jellyfin.yaml
   - jellyseerr.yaml
   - prowlarr.yaml
