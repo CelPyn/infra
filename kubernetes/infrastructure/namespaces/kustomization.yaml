@@ -2,6 +2,7 @@ resources:
   - authentik.yaml
   - cert-manager.yaml
   - external-dns.yaml
+  - falco.yaml
   - local-path-provisioner.yaml
   - media.yaml
   - metallb.yaml
