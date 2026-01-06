@@ -19,14 +19,14 @@ spec:
             extraEnv:
                 - name: TELEGRAM_TOKEN
                     valueFrom:
-                    secretKeyRef:
-                        name: telegram-credentials
-                        key: token
+                      secretKeyRef:
+                          name: telegram-credentials
+                          key: token
                 - name: TELEGRAM_CHATID
                     valueFrom:
-                    secretKeyRef:
-                        name: telegram-credentials
-                        key: chat-id
+                      secretKeyRef:
+                          name: telegram-credentials
+                          key: chat-id
             telegram:
               minimumpriority: warning
       releaseName: falco
