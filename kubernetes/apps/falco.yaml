@@ -12,6 +12,23 @@ spec:
     helm:
       values: |
         tty: true
+        
+        falcosidekick:
+          enabled: true
+          config:
+            extraEnv:
+                - name: TELEGRAM_TOKEN
+                    valueFrom:
+                    secretKeyRef:
+                        name: telegram-credentials
+                        key: token
+                - name: TELEGRAM_CHATID
+                    valueFrom:
+                    secretKeyRef:
+                        name: telegram-credentials
+                        key: chat-id
+            telegram:
+              minimumpriority: warning
       releaseName: falco
   destination:
     server: "https://kubernetes.default.svc"
