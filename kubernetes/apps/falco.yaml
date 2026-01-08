@@ -13,6 +13,17 @@ spec:
       values: |
         tty: true
         
+        customRules:
+          10-exceptions.yaml: |
+            - rule: Drop and execute new binary in container
+              append: true
+              exceptions:
+                - name: allow_chromedriver_in_flaresolverr
+                  fields: [container.name, proc.name, k8s.ns.name]
+                  comps: [=, =]
+                  values: 
+                    - [flaresolverr, chromedriver, media]
+        
         falcosidekick:
           enabled: true
           config:
