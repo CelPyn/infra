@@ -21,8 +21,9 @@ spec:
             # https://github.com/google/cadvisor/issues/3139
             - --disable_metrics=percpu,sched,tcp,udp,referenced_memory
             - --docker_only
-          metrics:
-            enabled: true
+        
+        metrics:
+          enabled: true
         
         tolerations:
           - key: "node-role.kubernetes.io/control-plane"
