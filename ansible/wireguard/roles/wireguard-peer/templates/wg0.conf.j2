@@ -13,6 +13,10 @@ PostDown = iptables -t filter -D FORWARD -i ens18 -o %i -j ACCEPT
 PostUp   = iptables -t nat    -A POSTROUTING -j MASQUERADE -s 10.26.0.0/16 -o ens18
 PostDown = iptables -t nat    -D POSTROUTING -j MASQUERADE -s 10.26.0.0/16 -o ens18
 
+# IP Forwarding
+PostUp   = sysctl -w net.ipv4.ip_forward=1
+PostDown = sysctl -w net.ipv4.ip_forward=0
+
 [Peer]
 Endpoint            = vpn.pynenborg.com:51820
 PublicKey           = wX5gKpH3um5w10LAUAo+hrSpudR7s+fjh1sFzYYbSwE=

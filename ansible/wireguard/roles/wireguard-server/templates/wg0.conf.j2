@@ -13,6 +13,10 @@ PostDown = iptables -t nat    -D POSTROUTING -j MASQUERADE -s 10.26.0.0/16 ! -o 
 PostUp   = iptables -t filter -A FORWARD -j ACCEPT -i %i -o %i
 PostDown = iptables -t filter -D FORWARD -j ACCEPT -i %i -o %i
 
+# IP Forwarding
+PostUp   = sysctl -w net.ipv4.ip_forward=1
+PostDown = sysctl -w net.ipv4.ip_forward=0
+
 # WG Peer
 [Peer]
 PublicKey  = byIpL99czxTUgoyF2fIV9QctM42hwoBVAUYce37jIks=

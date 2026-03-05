@@ -14,13 +14,6 @@
     state: present
     persistent: present
 
-- name: Enable IPv4 forwarding
-  sysctl:
-    name: net.ipv4.ip_forward
-    value: 1
-    state: present
-    sysctl_set: yes
-
 - name: Generate private key
   shell: wg genkey > /etc/wireguard/privatekey
   args:
