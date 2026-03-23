@@ -29,10 +29,13 @@ spec:
           - key: "node-role.kubernetes.io/control-plane"
             operator: "Exists"
             effect: "NoSchedule"
-
   destination:
     server: "https://kubernetes.default.svc"
     namespace: monitoring
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
     syncOptions:
       - ServerSideApply=true

@@ -14,3 +14,8 @@ spec:
     directory:
       recurse: true
   project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false

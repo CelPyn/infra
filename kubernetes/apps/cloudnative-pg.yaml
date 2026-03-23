@@ -19,5 +19,9 @@ spec:
     server: "https://kubernetes.default.svc"
     namespace: postgres
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
     syncOptions:
       - ServerSideApply=true

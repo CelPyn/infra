@@ -16,5 +16,6 @@ spec:
     automated:
       prune: false  # Don't auto-delete CRDs
       selfHeal: true
+      allowEmpty: false
     syncOptions:
       - ServerSideApply=true

@@ -11,7 +11,6 @@ spec:
     targetRevision: 2025.10.2
     helm:
       values: |
-        
         authentik:
           secret_key: file:///secret-key/key
           error_reporting:
@@ -71,12 +70,14 @@ spec:
         
         redis:
           enabled: true
-        
-
       releaseName: authentik
   destination:
     server: "https://kubernetes.default.svc"
     namespace: authentik
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
     syncOptions:
       - ServerSideApply=true

@@ -30,3 +30,8 @@ spec:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: traefik
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false

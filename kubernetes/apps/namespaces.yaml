@@ -12,3 +12,8 @@ spec:
     repoURL: 'git@github.com:CelPyn/infra.git'
     targetRevision: HEAD
   project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
