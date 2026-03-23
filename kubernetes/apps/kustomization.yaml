@@ -7,6 +7,7 @@ resources:
   - cloudnative-pg.yaml
   - external-dns.yaml
   - falco.yaml
+  - gateway-api-crds.yaml
   - kube-state-metrics.yaml
   - local-path-provisioner.yaml
   - media
