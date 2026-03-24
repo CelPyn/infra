@@ -16,6 +16,9 @@ spec:
           oidc:
             secret:
               create: false
+            externalSecret:
+              enabled: true
+              name: oidc
   destination:
     server: "https://kubernetes.default.svc"
     namespace: headlamp
