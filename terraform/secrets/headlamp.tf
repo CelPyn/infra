@@ -15,7 +15,7 @@ resource "kubernetes_secret" "headlamp_oidc" {
   data = {
     OIDC_CLIENT_ID = data.aws_ssm_parameter.headlamp_oidc_client_id.value
     OIDC_CLIENT_SECRET = data.aws_ssm_parameter.headlamp_oidc_client_secret.value
-    OIDC_ISSUER_URL = "https://auth.pynenborg.com/application/o/headlamp"
+    OIDC_ISSUER_URL = "https://auth.pynenborg.com/application/o/headlamp/"
     OIDC_SCOPES = "email,openid,profile"
     OIDC_CALLBACK_URL = "http://localhost:4466/oidc-callback"
   }
