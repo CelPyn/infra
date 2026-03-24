@@ -3,6 +3,7 @@ resources:
   - cert-manager.yaml
   - external-dns.yaml
   - falco.yaml
+  - headlamp.yaml
   - local-path-provisioner.yaml
   - media.yaml
   - metallb.yaml
