@@ -4,6 +4,7 @@ resources:
   - external-dns.yaml
   - falco.yaml
   - headlamp.yaml
+  - kubescape.yaml
   - local-path-provisioner.yaml
   - media.yaml
   - metallb.yaml

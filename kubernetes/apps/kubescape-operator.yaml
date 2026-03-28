@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubescape-operator
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: kubescape-operator
+    repoURL: https://kubescape.github.io/helm-charts/
+    targetRevision: 1.30.5
+    helm:
+      releaseName: kubescape-operator
+      values: |
+        clusterName: "homelab"
+        capabilities:
+          continuousScan: enable
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kubescape
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
+    syncOptions:
+      - ServerSideApply=true
