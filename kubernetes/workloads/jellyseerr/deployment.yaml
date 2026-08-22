@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: jellyseerr
-          image: 'fallenbagel/jellyseerr:2.7.3'
+          image: 'seerr/seerr:v3.4.1'
           env:
             - name: TZ
               value: Europe/Brussels
@@ -30,7 +30,7 @@ spec:
               mountPath: /app/config
           livenessProbe:
             httpGet:
-              path: /api/v1/status
+              path: /api/v1/settings/public
               port: http
               scheme: HTTP
             initialDelaySeconds: 30
@@ -39,7 +39,7 @@ spec:
             failureThreshold: 3
           readinessProbe:
             httpGet:
-              path: /api/v1/status
+              path: /api/v1/settings/public
               port: http
               scheme: HTTP
             initialDelaySeconds: 30
