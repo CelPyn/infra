@@ -8,7 +8,7 @@ spec:
   source:
     chart: cadvisor
     repoURL: https://ckotzbauer.github.io/helm-charts
-    targetRevision: 2.4.1
+    targetRevision: 2.4.3
     helm:
       releaseName: cadvisor
       values: |

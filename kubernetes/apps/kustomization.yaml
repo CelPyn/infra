@@ -8,9 +8,7 @@ resources:
   - external-dns.yaml
   - falco.yaml
   - gateway-api-crds.yaml
-  - headlamp.yaml
   - kube-state-metrics.yaml
-  - kubescape-operator.yaml
   - local-path-provisioner.yaml
   - media
   - metallb.yaml
